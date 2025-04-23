@@ -1,0 +1,41 @@
+package section_1;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class Locaters {
+public static void main(String[] args) throws InterruptedException {
+	WebDriver driver=new ChromeDriver();
+	driver.manage().window().maximize();
+	driver.get("https://www.flipkart.com/");
+	Thread.sleep(2000);
+	driver.manage().window().setSize(new Dimension(400,700));
+	Thread.sleep(2000);
+	driver.manage().window().setPosition(new Point(400,500));
+	Thread.sleep(2000);
+	driver.manage().window().maximize();
+	Thread.sleep(2000);
+	driver.navigate().to("https://www.meesho.com/?srsltid=AfmBOoo1I1RAOhtTAsi9WGVNHQZWv4B5fhJlihVR3KggFGIjVF-dQCYP");
+	Thread.sleep(2000);
+	driver.navigate().back();
+	Thread.sleep(2000);
+	driver.navigate().refresh();
+	Thread.sleep(2000);
+	driver.navigate().forward();
+	Thread.sleep(2000);
+	String exceptedUrl="https://www.meesho.com/?srsltid=AfmBOoo1I1RAOhtTAsi9WGVNHQZWv4B5fhJlihVR3KggFGIjVF-dQCYP";
+	String actualUrl=driver.getCurrentUrl();
+	if(exceptedUrl.equals(actualUrl)) {
+		System.out.println("the meso page is valid");
+	}
+	else {
+		System.out.println("the meso page is not valid");
+	}
+	driver.navigate().back();
+	Thread.sleep(2000);
+	WebElement a=driver.findElement(By.className("Pke_EE"));
+	a.sendKeys("pen");
+	Thread.sleep(2000);
+	a.click();
+	Thread.sleep(6000);
+	driver.quit();
+}
+}
